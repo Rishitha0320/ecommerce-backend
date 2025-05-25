@@ -30,13 +30,20 @@ connectDB();
 
 const app=express();
 app.use(express.json({ limit: '10mb' }));
+// app.use(cors({
+//       origin: "http://localhost:3000", // React frontend URL
+//       credentials: true,
+// }
+
+
+// ));
 app.use(cors({
-      origin: "http://localhost:3000", // React frontend URL
-      credentials: true,
-}
-
-
-));
+  origin: [
+    "http://localhost:3000",
+    "https://e-commerce-frontend-six-ruby.vercel.app"
+  ],
+  credentials: true,
+}));
 
 app.use(express.urlencoded({ extended: true }));
 
